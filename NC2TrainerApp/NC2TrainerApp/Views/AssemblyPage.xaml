@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NC2TrainerApp.ViewModels"
+             x:Class="NC2TrainerApp.Views.AssemblyPage">
+    <ContentPage.BindingContext>
+        <vm:AssemblyViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,60,*"
+              ColumnDefinitions="*">
+
+            <ScrollView WidthRequest="{Binding ScreenWidth}" HeightRequest="{Binding ScreenWidth}" Orientation="Both">
+                <RelativeLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center">
+                    <Image x:Name="imgCaseDropZone"
+                       RelativeLayout.XConstraint="0"
+                       RelativeLayout.YConstraint="0"
+                       RelativeLayout.WidthConstraint="400"
+                       RelativeLayout.HeightConstraint="400"
+                       PropertyChanged="CaseDropZone_PropertyChanged"
+                       BackgroundColor="LightGray">
+                        <Image.GestureRecognizers>
+                            <DropGestureRecognizer AllowDrop="{Binding CaseIsVisible}" />
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="imgMotherboardDropZone"
+                           IsVisible="False"
+                           RelativeLayout.XConstraint="40"
+                           RelativeLayout.YConstraint="135"
+                           RelativeLayout.WidthConstraint="215"
+                           RelativeLayout.HeightConstraint="215"
+                           PropertyChanged="MotherboardDropZone_PropertyChanged">
+                        <Image.GestureRecognizers>
+                            <DropGestureRecognizer AllowDrop="{Binding MotherboardIsVisible}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="imgMotherboardScrewDropZone"
+                           IsVisible="False"
+                           RelativeLayout.XConstraint="40"
+                           RelativeLayout.YConstraint="135"
+                           RelativeLayout.WidthConstraint="215"
+                           RelativeLayout.HeightConstraint="215"
+                           PropertyChanged="MotherboardScrewDropZone_PropertyChanged">
+                        <Image.GestureRecognizers>
+                            <DropGestureRecognizer AllowDrop="{Binding MotherboardScrewIsVisible}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="imgProcessorDropZone"
+                           IsVisible="False"
+                           RelativeLayout.XConstraint="129"
+                           RelativeLayout.YConstraint="180"
+                           RelativeLayout.WidthConstraint="35"
+                           RelativeLayout.HeightConstraint="40"
+                           PropertyChanged="ProcessorDropZone_PropertyChanged">
+                        <Image.GestureRecognizers>
+                            <DropGestureRecognizer AllowDrop="{Binding ProcessorIsVisible}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="imgHeatSinkDropZone"
+                           IsVisible="False"
+                           RelativeLayout.XConstraint="110"
+                           RelativeLayout.YConstraint="162"
+                           RelativeLayout.WidthConstraint="70"
+                           RelativeLayout.HeightConstraint="70"
+                           PropertyChanged="HeatSinkDropZone_PropertyChanged">
+                        <Image.GestureRecognizers>
+                            <DropGestureRecognizer AllowDrop="{Binding HeatSinkIsVisible}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="imgMemoryModuleDropZone"
+                           IsVisible="False"
+                           RelativeLayout.XConstraint="150"
+                           RelativeLayout.YConstraint="142"
+                           RelativeLayout.WidthConstraint="110"
+                           RelativeLayout.HeightConstraint="110"
+                           PropertyChanged="MemoryModuleDropZone_PropertyChanged">
+                        <Image.GestureRecognizers>
+                            <DropGestureRecognizer AllowDrop="{Binding MemoryModuleIsVisible}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="imgHardDiskDriveDropZone"
+                           IsVisible="False"
+                           RelativeLayout.XConstraint="250"
+                           RelativeLayout.YConstraint="35"
+                           RelativeLayout.WidthConstraint="100"
+                           RelativeLayout.HeightConstraint="100"
+                           PropertyChanged="HardDiskDriveDropZone_PropertyChanged">
+                        <Image.GestureRecognizers>
+                            <DropGestureRecognizer AllowDrop="{Binding HardDiskDriveIsVisible}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="imgPowerSupplyDropZone"
+                           IsVisible="False"
+                           RelativeLayout.XConstraint="45"
+                           RelativeLayout.YConstraint="10"
+                           RelativeLayout.WidthConstraint="150"
+                           RelativeLayout.HeightConstraint="150"
+                           PropertyChanged="PowerSupplyDropZone_PropertyChanged">
+                        <Image.GestureRecognizers>
+                            <DropGestureRecognizer AllowDrop="{Binding PowerSupplyImgSource}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="imgCaseCoverDropZone"
+                           IsVisible="False"
+                           RelativeLayout.XConstraint="0"
+                           RelativeLayout.YConstraint="10"
+                           RelativeLayout.WidthConstraint="400"
+                           RelativeLayout.HeightConstraint="400"
+                           PropertyChanged="CaseCoverDropZone_PropertyChanged">
+                        <Image.GestureRecognizers>
+                            <DropGestureRecognizer AllowDrop="{Binding CaseCoverIsVisible}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="imgCaseCoverScrewDropZone"
+                           IsVisible="False"
+                           RelativeLayout.XConstraint="0"
+                           RelativeLayout.YConstraint="10"
+                           RelativeLayout.WidthConstraint="400"
+                           RelativeLayout.HeightConstraint="400"
+                           PropertyChanged="CaseCoverScrewDropZone_PropertyChanged">
+                        <Image.GestureRecognizers>
+                            <DropGestureRecognizer AllowDrop="{Binding CaseCoverScrewIsVisible}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </RelativeLayout>
+            </ScrollView>
+
+
+
+            <Label Grid.Row="1" Grid.Column="0"
+                   x:Name="lblDirections"
+                   Text="Directions: Drag the components below in its proper order to the drop zone above."
+                   TextColor="Black"
+                   Padding="10"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+
+            <ScrollView Grid.Row="2"
+                        Orientation="Horizontal"
+                        Margin="5">
+                <StackLayout Orientation="Horizontal">
+
+                    <!--#region Case -->
+                    <Grid RowDefinitions="*,Auto"
+                          IsVisible="{Binding CaseIsVisible}">
+                        <Image Grid.Row="0"
+                               Source="{Binding CaseImgSource}">
+                            <Image.GestureRecognizers>
+                                <DragGestureRecognizer CanDrag="True" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Grid.Row="1"
+                               Text="{Binding CaseLabel}"
+                               TextColor="White"
+                               FontSize="Medium"
+                               BackgroundColor="Gray"
+                               HorizontalTextAlignment="Center" />
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Case Cover -->
+                    <Grid RowDefinitions="*,Auto"
+                          IsVisible="{Binding CaseCoverIsVisible}">
+                        <Image Grid.Row="0"
+                               Source="{Binding CaseCoverImgSource}">
+                            <Image.GestureRecognizers>
+                                <DragGestureRecognizer CanDrag="True" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Grid.Row="1"
+                               Text="{Binding CaseCoverLabel}"
+                               TextColor="White"
+                               FontSize="Medium"
+                               BackgroundColor="Gray"
+                               HorizontalTextAlignment="Center" />
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Case Screw -->
+                    <Grid RowDefinitions="*,Auto"
+                          IsVisible="{Binding CaseCoverScrewIsVisible}">
+                        <Image Grid.Row="0"
+                               Source="{Binding CaseCoverScrewImgSource}">
+                            <Image.GestureRecognizers>
+                                <DragGestureRecognizer CanDrag="True" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Grid.Row="1"
+                               Text="{Binding CaseCoverScrewLabel}"
+                               TextColor="White"
+                               FontSize="Medium"
+                               BackgroundColor="Gray"
+                               HorizontalTextAlignment="Center" />
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Hard Disk Drive -->
+                    <Grid RowDefinitions="*,Auto"
+                          IsVisible="{Binding HardDiskDriveIsVisible}">
+                        <Image Grid.Row="0"
+                               Source="{Binding HardDiskDriveImgSource}">
+                            <Image.GestureRecognizers>
+                                <DragGestureRecognizer CanDrag="True" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Grid.Row="1"
+                               Text="{Binding HardDiskDriveLabel}"
+                               TextColor="White"
+                               FontSize="Medium"
+                               BackgroundColor="Gray"
+                               HorizontalTextAlignment="Center" />
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Heatsink -->
+                    <Grid RowDefinitions="*,Auto"
+                          IsVisible="{Binding HeatSinkIsVisible}">
+                        <Image Grid.Row="0"
+                               Source="{Binding HeatSinkImgSource}">
+                            <Image.GestureRecognizers>
+                                <DragGestureRecognizer CanDrag="True" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Grid.Row="1"
+                               Text="{Binding HeatSinkLabel}"
+                               TextColor="White"
+                               FontSize="Medium"
+                               BackgroundColor="Gray"
+                               HorizontalTextAlignment="Center" />
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Memory Module -->
+                    <Grid RowDefinitions="*,Auto"
+                          IsVisible="{Binding MemoryModuleIsVisible}">
+                        <Image Grid.Row="0"
+                               Source="{Binding MemoryModuleImgSource}">
+                            <Image.GestureRecognizers>
+                                <DragGestureRecognizer CanDrag="True" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Grid.Row="1"
+                               Text="{Binding MemoryModuleLabel}"
+                               TextColor="White"
+                               FontSize="Medium"
+                               BackgroundColor="Gray"
+                               HorizontalTextAlignment="Center" />
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Motherboard -->
+                    <Grid RowDefinitions="*,Auto"
+                          IsVisible="{Binding MotherboardIsVisible}">
+                        <Image Grid.Row="0"
+                               Source="{Binding MotherboardImgSource}">
+                            <Image.GestureRecognizers>
+                                <DragGestureRecognizer CanDrag="True" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Grid.Row="1"
+                               Text="{Binding MotherboardLabel}"
+                               TextColor="White"
+                               FontSize="Medium"
+                               BackgroundColor="Gray"
+                               HorizontalTextAlignment="Center" />
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Motherboard Screw -->
+                    <Grid RowDefinitions="*,Auto"
+                          IsVisible="{Binding MotherboardScrewIsVisible}">
+                        <Image Grid.Row="0"
+                               Source="{Binding MotherboardScrewImgSource}">
+                            <Image.GestureRecognizers>
+                                <DragGestureRecognizer CanDrag="True" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Grid.Row="1"
+                               Text="{Binding MotherboardScrewLabel}"
+                               TextColor="White"
+                               FontSize="Medium"
+                               BackgroundColor="Gray"
+                               HorizontalTextAlignment="Center" />
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Power Supply -->
+                    <Grid RowDefinitions="*,Auto"
+                          IsVisible="{Binding PowerSupplyIsVisible}">
+                        <Image Grid.Row="0"
+                               Source="{Binding PowerSupplyImgSource}">
+                            <Image.GestureRecognizers>
+                                <DragGestureRecognizer CanDrag="True" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Grid.Row="1"
+                               Text="{Binding PowerSupplyLabel}"
+                               TextColor="White"
+                               FontSize="Medium"
+                               BackgroundColor="Gray"
+                               HorizontalTextAlignment="Center" />
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Processor -->
+                    <Grid RowDefinitions="*,Auto"
+                          IsVisible="{Binding ProcessorIsVisible}">
+                        <Image Grid.Row="0"
+                               Source="{Binding ProcessorImgSource}">
+                            <Image.GestureRecognizers>
+                                <DragGestureRecognizer CanDrag="True" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Grid.Row="1"
+                               Text="{Binding ProcessorLabel}"
+                               TextColor="White"
+                               FontSize="Medium"
+                               BackgroundColor="Gray"
+                               HorizontalTextAlignment="Center" />
+                    </Grid>
+                    <!--#endregion-->
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+
+
+    </ContentPage.Content>
+</ContentPage>
